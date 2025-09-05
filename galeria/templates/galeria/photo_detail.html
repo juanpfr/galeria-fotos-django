@@ -1,30 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ photo.title }} - Detalhes</title>
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Feather Icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
-</head>
-<body class="bg-gray-50 flex flex-col min-h-screen">
+{% extends "galeria/base.html" %}
+{% block tile %}{{ photo.title }}{% endblock %}
 
-  <!-- Header -->
-  <header class="bg-green-700 text-white shadow-md">
-    <div class="container mx-auto flex items-center justify-between p-4">
-      <h1 class="text-2xl font-bold flex items-center gap-2">
-        <i data-feather="image"></i> Detalhes da Foto
-      </h1>
-      <a href="{% url 'home' %}" class="text-sm bg-green-600 hover:bg-green-500 px-3 py-1 rounded-lg shadow">
-        Voltar à galeria
-      </a>
-    </div>
-  </header>
-
-  <!-- Main -->
-  <main class="container mx-auto flex-1 p-6">
+    {% block content %}
     <div class="bg-white shadow-lg rounded-2xl overflow-hidden border border-green-200 max-w-2xl mx-auto">
       {% if photo.image %}
         <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="w-full h-80 object-cover">
@@ -39,18 +16,4 @@
         </a>
       </div>
     </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-green-700 text-white p-4 mt-6">
-    <div class="container mx-auto text-center text-sm">
-      <p>&copy; 2025 Galeria de Fotos. Todos os direitos reservados.</p>
-    </div>
-  </footer>
-
-  <!-- Ativar Feather Icons -->
-  <script>
-    feather.replace()
-  </script>
-</body>
-</html>
+{% endblock %}
